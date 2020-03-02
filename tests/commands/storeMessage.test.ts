@@ -34,7 +34,7 @@ describe('storeMessage', function () {
         const testContainer = container.new();
 
         modelFakes = {
-            Sample: new SampleModelFake()
+            message: new SampleModelFake()
         };
 
         testContainer.build('ModelsService').setModels(modelFakes);
@@ -57,7 +57,7 @@ describe('storeMessage', function () {
             .assert(
                 'the message is stored',
                 () => {
-                    const actualMessage = modelFakes.Sample.createStub.args[0][0]; //const name?
+                    const actualMessage = modelFakes.message.createStub.args[0][0]; 
 
                     assert.equal(
                         JSON.stringify(actualMessage),
