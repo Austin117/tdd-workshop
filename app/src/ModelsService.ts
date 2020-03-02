@@ -9,9 +9,9 @@ class ModelsService {
     private models: DataModelSet
 
     setModels(models: DataModelSet) {
-        if (typeof this.models !== 'undefined') {
-            throw new Error('Cannot set models more than once.');
-        }
+        // if (typeof this.models !== 'undefined') {
+        //     throw new Error('Cannot set models more than once.');
+        // }
 
         this.models = models;
     }

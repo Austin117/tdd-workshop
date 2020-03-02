@@ -1,6 +1,7 @@
 import module0 from '../app/src/CommandCLIRegistry';
 import module1 from '../app/src/commands/SampleCommand';
-import module2 from '../app/src/ModelsService';
+import module2 from '../app/src/commands/StoreMessage';
+import module3 from '../app/src/ModelsService';
 
 
 const dject = require('dject');
@@ -15,6 +16,9 @@ container.register(module1.value, module1.name);
 
 container.copyProps(module2.value, module2);
 container.register(module2.value, module2.name);
+
+container.copyProps(module3.value, module3);
+container.register(module3.value, module3.name);
 
 
 export default container;

@@ -1,13 +1,13 @@
-import { IDataModel } from '../../app/types/DataModels';
 import ICommand from '../../app/types/ICommand';
 
 import container from '../../app/container';
-import ModelsService from '../../app/src/ModelsService';
+import { IDataModel } from '../../app/types/DataModels';
 
 const { assert } = require('chai');
 const sinon = require('sinon');
 const givenWhenThen = require('fluent-gwt').configure();
 
+//duplicate code
 class SampleModelFake implements IDataModel {
     createStub: any;
 
@@ -26,9 +26,9 @@ class SampleModelFake implements IDataModel {
     val() { }
 }
 
-describe('Sample Application Command', function () {
+describe('storeMessage', function () {
     let modelFakes;
-    let sampleCommand: ICommand;
+    let storeMessage: ICommand;
 
     beforeEach(function () {
         const testContainer = container.new();
@@ -39,31 +39,34 @@ describe('Sample Application Command', function () {
 
         testContainer.build('ModelsService').setModels(modelFakes);
 
-        sampleCommand = testContainer.build('SampleCommand');
+        storeMessage = testContainer.build('StoreMessage');
     });
 
-    it('creates a test record when triggered by a user action', function () {
-        const expectedContentValue = 'User input value';
+    it('stores a message when storeMessage commands is ran by user at the terminal', function () {
+        const message = 'saaa Dude'; // move this to arrange?
 
         return givenWhenThen
             .arrange(
-                'User enters expected content value at CLI',
-                () => [expectedContentValue]
+                'a user is at the terminal',
+                () => {
+                    return [message]
+                } 
             )
             .act(
-                'Sample command is run with user entered values',
-                (userEnteredValues) => sampleCommand.exec(userEnteredValues)
+                'runs storeMessage command with a mesaage',
+                (message) => storeMessage.exec(message)
             )
             .assert(
-                'Data store receives updated content',
+                'the message is stored',
                 () => {
-                    const commandResult = modelFakes.Sample.createStub.args[0][0];
+                    const commandResult = modelFakes.Sample.createStub.args[0][0]; //const name?
 
                     assert.equal(
                         JSON.stringify(commandResult),
-                        `{"userInput":"${expectedContentValue}"}`
+                        `{"userInput":"${message}"}`
                     );
                 }
             );
     });
+
 });
