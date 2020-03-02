@@ -43,14 +43,12 @@ describe('storeMessage', function () {
     });
 
     it('stores a message when storeMessage commands is ran by user at the terminal', function () {
-        const message = 'saaa Dude'; // move this to arrange?
+        const message = 'saaa Dude'; 
 
         return givenWhenThen
             .arrange(
                 'a user is at the terminal',
-                () => {
-                    return [message]
-                } 
+                () => [message]
             )
             .act(
                 'runs storeMessage command with a mesaage',
