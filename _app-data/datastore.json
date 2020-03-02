@@ -1,5 +1,8 @@
 {
     "sample": {
         "userInput": "booyah1"
+    },
+    "message": {
+        "content": "booyah3"
     }
 }

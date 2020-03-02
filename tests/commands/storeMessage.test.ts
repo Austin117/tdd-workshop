@@ -61,7 +61,7 @@ describe('storeMessage', function () {
 
                     assert.equal(
                         JSON.stringify(actualMessageObject),
-                        `{"userInput":"${message}"}`
+                        `{"content":"${message}"}`
                     );
                 }
             );
