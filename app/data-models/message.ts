@@ -1,10 +1,10 @@
 const DataModel = require("datamodel");
 
-export default class Sample extends DataModel {
+export default class Message extends DataModel {
     constructor() {
         super();
 
-        this.name = 'message';
+        this.name = 'Message';
 
         this.setDataDefinition(
             DataModel.Object({

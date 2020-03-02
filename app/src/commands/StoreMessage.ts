@@ -15,7 +15,7 @@ class StoreMessage implements ICommand {
     }
 
     exec(userInput = []) {
-        this.modelSet.message.create({
+        this.modelSet.Message.create({
             userInput: userInput.join(' ')
         });
     }
