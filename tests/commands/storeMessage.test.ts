@@ -57,10 +57,10 @@ describe('storeMessage', function () {
             .assert(
                 'the message is stored',
                 () => {
-                    const actualMessage = modelFakes.Message.createStub.args[0][0]; 
+                    const actualMessageObject = modelFakes.Message.createStub.args[0][0]; 
 
                     assert.equal(
-                        JSON.stringify(actualMessage),
+                        JSON.stringify(actualMessageObject),
                         `{"userInput":"${message}"}`
                     );
                 }
